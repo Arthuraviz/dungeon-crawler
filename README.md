@@ -14,16 +14,27 @@ int main() {
   int op;
   
   printf("selecione uma opção\n");
+  
   printf("\n");
+  
   printf("1 jogar\n");
+  
   printf("2 tutorial\n");
+  
   printf("3 sair\n");
+  
   printf("\n");
+  
   printf("");
+  
   scanf("%d", &op);
+  
   if(op == 3){
+  
 	printf("obrigado por jogar tenha um bom dia ;D");
+ 
   }else if(op == 2){
+  
   
   	printf("tutorial do jogo:\n");
   	printf("\n");
@@ -47,36 +58,59 @@ int main() {
   }else if( op == 1){  
 
   char sl[SIZE][SIZE] = {
+  
         {'*', '*', '*', '*', '*', 'D', '*', '*', '*', '*'},
+	
         {'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'},
+	
         {'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'},
+	
         {'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '@', '*'},
+	
         {'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'},
+	
         {'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'},
+	
         {'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'},
+	
         {'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'},
+	
         {'*', ' ', ' ', ' ', ' ', '&', ' ', ' ', ' ', '*'},
+	
         {'*', '*', '*', '*', '*', '*', '*', '*', '*', '*'}};
+	
     
     int h = 5; 
+    
     int y = 8; 
+    
     char input;
+    
     int i;
+    
     int j;
+    
     
 
     printf("Use as teclas W, A, S, D para mover o caractere '&'.\n");
+    
     printf("Pressione 'q' para sair.\n");
 
     while (1) {
+    
         system("cls"); 
 
-        // Desenha o quadrado
+       
         for ( i = 0; i < SIZE; i++) {
+	
             for ( j = 0; j < SIZE; j++) {
+	    
                 printf("%c", sl[i][j]);
+		
             }
+	    
             printf("\n");
+	    
         }
     	
     	
@@ -86,51 +120,85 @@ int main() {
 
        
         switch (input) {
+	
             case 'w':
+	    
                 if (sl[y - 1][h] == ' ') {
+		
                     sl[y][h] = ' ';
+		    
                     y--;
                 }
                 break;
+		
             case 's':
+	    
                 if (sl[y + 1][h] == ' ') {
+		
                     sl[y][h] = ' ';
+		    
                     y++;
+		    
                 }
+		
                 break;
+		
             case 'a':
+	    
                 if (sl[y][h - 1] == ' ') {
+		
                     sl[y][h] = ' ';
+		    
                     h--;
+		    
                 }
                 break;
+		
             case 'd':
+	    
                 if (sl[y][h + 1] == ' ') {
+		
                     sl[y][h] = ' ';
+		    
                     h++;
+		    
                 }
+		
                 break;
+		
             case 'i':
+	    
     if ( sl[3][7] == '&' || sl[2][8] == '&' || sl[4][8] == '&') {
+    
         sl[3][8] = ' ';
+	
         sl[0][5] = '=';
+	
         
         break;
+	
     } else if (sl[1][5] == '&' && sl[0][5] == '=') {
+    
         system("cls");
-        printf("\n");       
+	
+        printf("\n");    
+	
         printf("                    vitoria! \n");
+	
         return 0;
     	}
     	
     
       
             default:
+	    
                 printf("Tecla inválida!\n");
+		
         }
 
        
         sl[y][h] = '&';
+	
 
          
        
