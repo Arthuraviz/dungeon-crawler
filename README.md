@@ -4,16 +4,11 @@
 #include <stdio.h>
 #include <conio.h> 
 #include <stdlib.h>
-
 #define SIZE 10
-
 
 int main() {
   
-  // tela de inicio
-  
   int op;
-  
   
   printf("selecione uma opção\n");
   printf("\n");
@@ -23,13 +18,10 @@ int main() {
   printf("\n");
   printf("");
   scanf("%d", &op);
-  
   if(op == 3){
-	
 	printf("obrigado por jogar tenha um bom dia ;D");
-	
   }else if(op == 2){
-  	
+  
   	printf("tutorial do jogo:\n");
   	printf("\n");
   	printf("objetivo:\n");
@@ -49,8 +41,8 @@ int main() {
   	printf("\n");
   	printf("fim");
   	
-  }else if( op == 1){  // sala nivel 1
-  
+  }else if( op == 1){  
+
   char sl[SIZE][SIZE] = {
         {'*', '*', '*', '*', '*', 'D', '*', '*', '*', '*'},
         {'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'},
@@ -63,8 +55,8 @@ int main() {
         {'*', ' ', ' ', ' ', ' ', '&', ' ', ' ', ' ', '*'},
         {'*', '*', '*', '*', '*', '*', '*', '*', '*', '*'}};
     
-    int h = 5; // Posição inicial x do '&'
-    int y = 8; // Posição inicial y do '&'
+    int h = 5; 
+    int y = 8; 
     char input;
     int i;
     int j;
@@ -74,7 +66,7 @@ int main() {
     printf("Pressione 'q' para sair.\n");
 
     while (1) {
-        system("cls"); // Limpa a tela
+        system("cls"); 
 
         // Desenha o quadrado
         for ( i = 0; i < SIZE; i++) {
@@ -86,10 +78,10 @@ int main() {
     	
     	
 
-        // Captura a tecla pressionada
+       
         input = getch();
 
-        // Muda a posição do caractere '&' de acordo com a tecla pressionada
+       
         switch (input) {
             case 'w':
                 if (sl[y - 1][h] == ' ') {
@@ -134,7 +126,7 @@ int main() {
                 printf("Tecla inválida!\n");
         }
 
-        // Atualiza a posição do '&' no quadrado
+       
         sl[y][h] = '&';
 
          
