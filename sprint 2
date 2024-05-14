@@ -1,1 +1,304 @@
+#include <stdio.h>
+#include <conio.h> 
+#include <stdlib.h>
+#include <time.h>
 
+
+
+int main() {
+  
+  // tela de inicio
+  
+  int op;
+  
+  
+  
+  
+  printf("selecione uma opção\n");
+  printf("\n");
+  printf("1 jogar\n");
+  printf("2 tutorial\n");
+  printf("3 sair\n");
+  printf("\n");
+  printf("");
+  scanf("%d", &op);
+  
+  if(op == 3){
+	
+	printf("obrigado por jogar tenha um bom dia ;D");
+	
+  }else if(op == 2){
+  	
+  	printf("tutorial do jogo:\n");
+  	printf("\n");
+  	printf("objetivo:\n");
+  	printf("seu objetivo e controlaro boneco '&' usando as teclas W,A,S,D ate a chave '@' e abrir a porta 'D' \n");
+  	printf("para pegar a chave e necessaria ficar uma unidade abaixo dela e interagir usando a tecla 'i' \n");
+  	printf("para abrir a porta 'D' e necessario interagir com a chave e interagir mais uma vez para entrar na porta = \n");
+  	printf("\n");
+  	printf("monstros e obstaculos:\n");
+  	printf("o monstro nivel 1 'x' se move de maneira aleatoria para cima e para baixo ou para a direita e para esquerda \n");
+  	printf("o monstro nivel 2 'Y' segue o jogador \n");
+  	printf("os espinhos '#' ficam espalhados pelo do mapa \n ");
+  	printf("se voce encostar em qualquer um deles voce morre \n");
+  	printf("\n");
+  	printf("itens de interacao no mapa:");
+  	printf("o teletransporte '>' quando interagido leva o boneco & para o outro teleporte '<' e virse versa \n");
+  	printf("o botão 'O' e ativado quando se fica encima dele \n");
+  	printf("\n");
+  	printf("fim");
+  	
+  }else if( op == 1){  // sala nivel 1
+  
+  
+  
+  
+  system("cls");
+  
+    
+   
+  
+  char sl[10][10] = {
+        {'*', '*', '*', '*', '*', 'D', '*', '*', '*', '*'},
+        {'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'},
+        {'*', ' ', ' ', ' ', '#', '#', ' ', ' ', ' ', '*'},
+        {'*', ' ', ' ', ' ', '#', '#', ' ', ' ', '@', '*'},
+        {'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'},
+        {'*', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'},
+        {'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'},
+        {'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'},
+        {'*', ' ', ' ', ' ', ' ', '&', ' ', ' ', ' ', '*'},
+        {'*', '*', '*', '*', '*', '*', '*', '*', '*', '*'}};
+    
+    int z = 8; 
+    int h = 5; 
+    char input;
+    int i;
+    int zx = 5;
+    int hx = 1;
+    int dir;
+    char vit ='&&';
+    
+    srand(time(NULL));
+    
+    
+    while(1){
+	system("cls");
+    
+    for(i=0;i<10;i++){
+
+    	printf("%c", sl[0][i]);
+
+	}printf ("\n");
+	for(i=0;i<10;i++){
+		
+		printf("%c", sl[1][i]);
+		
+	}printf ("\n");
+	for(i=0;i<10;i++){
+		
+		printf("%c", sl[2][i]);
+		
+		}printf ("\n");
+	for(i=0;i<10;i++){
+		
+		printf("%c", sl[3][i]);
+		
+		}printf ("\n");
+	for(i=0;i<10;i++){
+		
+		printf("%c", sl[4][i]);
+		
+		}printf ("\n");
+	for(i=0;i<10;i++){
+		
+		printf("%c", sl[5][i]);
+		
+		}printf ("\n");
+	for(i=0;i<10;i++){
+		
+		printf("%c", sl[6][i]);
+		
+		}printf ("\n");
+	for(i=0;i<10;i++){
+		
+		printf("%c", sl[7][i]);
+		
+		}printf ("\n");
+	for(i=0;i<10;i++){
+		
+		printf("%c", sl[8][i]);
+		
+		}printf ("\n");
+	for(i=0;i<10;i++){
+		
+		printf("%c", sl[9][i]);
+}
+	
+	
+	
+    dir = rand() % 4 + 1; // Gera um número aleatório de 1 a 4
+        
+        // Move x na direção aleatória
+        switch (dir) {
+            
+            case 1:
+            	if( sl [zx-1][hx] == ' '){
+            		
+            		sl[zx-1][hx] = 'x';
+            		sl[zx][hx] =' ';
+            		zx--;
+            		
+				}else if( sl[zx-1][hx] == '&'){
+					
+					system("cls");
+			 printf("voce morreu\n");
+			 system("pause");
+			 
+				} break;
+			
+			case 2:
+            	if( sl [zx][hx-1] == ' '){
+            		
+            		sl[zx][hx-1] = 'x';
+            		sl[zx][hx] =' ';
+            		hx--;
+            		
+				}else if( sl[zx][hx-1] == '&'){
+					
+					system("cls");
+			 printf("voce morreu\n");
+			 system("pause");
+			 
+				} break;
+				
+			case 3:
+            	if( sl [zx+1][hx] == ' '){
+            		
+            		sl[zx+1][hx] = 'x';
+            		sl[zx][hx] =' ';
+            		zx++;
+            		
+				}else if( sl[zx+1][hx] == '&'){
+					
+					system("cls");
+			 printf("voce morreu\n");
+			 system("pause");
+			 
+				} break;
+				
+			case 4:
+            	if( sl [zx][hx+1] == ' '){
+            		
+            		sl[zx][hx+1] = 'x';
+            		sl[zx][hx] =' ';
+            		hx++;
+            		
+				}else if( sl[zx][hx+1] == '&'){
+					
+					system("cls");
+			 printf("voce morreu\n");
+			 system("pause");
+			 
+				}break;
+				
+                
+            }
+    
+     input = getch();
+     
+     switch(input){
+     	
+     	case 'w':
+     		
+     		if(sl[z-1][h] == ' '){
+			 
+            sl[z-1][h] = '&';
+            sl[z][h] =' ';
+            z--;
+            
+			 }else if( sl[z-1][h] == '#'|| sl[z-1][h] == 'x'){
+			 	
+			 system("cls");
+			 printf("voce morreu\n");
+			 system("pause");
+			 
+			 
+		} break;
+		
+		case 's':
+     		
+     		if(sl[z+1][h] == ' '){
+			 
+            sl[z+1][h] = '&';
+            sl[z][h] =' ';
+            z++;
+            
+			 }else if( sl[z+1][h] == '#'|| sl[z+1][h] == 'x'){
+			 
+			 	
+			 	system("cls");
+			 printf("voce morreu\n");
+			 system("pause");
+		}break;
+			    
+		case 'a':
+     		
+     		if(sl[z][h-1] == ' '){
+			 
+            sl[z][h -1] = '&';
+            sl[z][h] =' ';
+            h--;
+            
+			 }else if( sl[z][h-1] == '#'|| sl[z][h-1] == 'x'){
+			 	
+			 	system("cls");
+			 printf("voce morreu\n");
+			 system("pause");
+			 
+		}break;
+			 
+			    
+		case 'd':
+     		
+     		if(sl[z][h+1] == ' '){
+			 
+            sl[z][h+1] = '&';
+            sl[z][h] =' ';
+            h++; 
+			 }else if( sl[z][h+1] == '#'|| sl[z][h+1] == 'x'){
+			 	
+			 	system("cls");
+			 printf("voce morreu\n");
+			 system("pause");
+				 }break;
+				 
+		case 'i':
+			
+			if(sl[z-1][h] == '@'||sl[z+1][h] == '@'||sl[z][h-1] == '@'||sl[z][h+1] == '@'){
+				
+				sl[3][8] = ' ';
+				sl[0][5] = '=';
+			}else if(sl[z-1][h] == '='||sl[z+1][h] == '='||sl[z][h-1] == '='||sl[z][h+1] == '='){
+				
+				system("cls");
+				printf("nivel  concluido\n ");
+				system("pause");
+				system("cls");	
+			}
+	  
+}
+	  
+	  
+	  
+	  
+	
+} 
+		}
+	
+	 
+
+  
+    return 0;
+	
+}
