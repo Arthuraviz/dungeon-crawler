@@ -1,0 +1,1020 @@
+#include <stdio.h>
+#include <conio.h> 
+#include <stdlib.h>
+#include <time.h>
+
+
+
+int main() {
+  
+  // tela de inicio
+  
+  int op;
+  
+  
+  
+  
+  printf("selecione uma opção\n");
+  printf("\n");
+  printf("1 jogar\n");
+  printf("2 tutorial\n");
+  printf("3 sair\n");
+  printf("\n");
+  printf("");
+  scanf("%d", &op);
+  
+  if(op == 3){
+	
+	printf("obrigado por jogar tenha um bom dia ;D");
+	
+  }else if(op == 2){
+  	
+  	printf("tutorial do jogo:\n");
+  	printf("\n");
+  	printf("objetivo:\n");
+  	printf("seu objetivo e controlaro boneco '&' usando as teclas W,A,S,D ate a chave '@' e abrir a porta 'D' \n");
+  	printf("para pegar a chave e necessaria ficar uma unidade abaixo dela e interagir usando a tecla 'i' \n");
+  	printf("para abrir a porta 'D' e necessario interagir com a chave e interagir mais uma vez para entrar na porta = \n");
+  	printf("\n");
+  	printf("monstros e obstaculos:\n");
+  	printf("o monstro nivel 1 'x' se move de maneira aleatoria para cima e para baixo ou para a direita e para esquerda \n");
+  	printf("o monstro nivel 2 'Y' segue o jogador \n");
+  	printf("os espinhos '#' ficam espalhados pelo do mapa \n ");
+  	printf("se voce encostar em qualquer um deles voce morre \n");
+  	printf("\n");
+  	printf("itens de interacao no mapa:");
+  	printf("o teletransporte '>' quando interagido leva o boneco & para o outro teleporte '<' e virse versa \n");
+  	printf("o botão 'O' e ativado quando se fica encima dele \n");
+  	printf("\n");
+  	printf("fim");
+  	
+  }else if( op == 1){  // sala nivel 1
+  system("cls");
+  
+  char sl[10][10] = {
+  {'*','*','*','*','D','*','*','*','*','*'},
+  {'*',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+  {'*',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+  {'*',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+  {'*',' ',' ',' ',' ',' ','@',' ',' ','*'},
+  {'*',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+  {'*',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+  {'*',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+  {'*',' ',' ',' ','&',' ',' ',' ',' ','*'},
+  {'*','*','*','*','*','*','*','*','*','*'}};
+  char sll[20][20] = {
+        {'*','*','*','*','*','D','*','*','*','*','*','*','*','*','*','*','*','*','*','*'},
+        {'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+        {'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+        {'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+        {'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+        {'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+        {'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#','#','#',' ','*'},
+        {'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#','@','#',' ','*'},
+        {'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#','#','#',' ','*'},
+        {'*',' ',' ','X',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+        {'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+        {'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','o',' ',' ','*'},
+        {'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+        {'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+        {'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+        {'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+        {'*',' ',' ',' ',' ',' ',' ',' ',' ','&',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+        {'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+        {'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+        {'*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*'}};
+        
+    char slll[30][30] ={
+		{'*','*','*','*','*','*','*','*','*','*','D','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ','o',' ',' ',' ',' ',' ',' ',' ',' ','>',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#','#','#',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#','@','#',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#',' ','#','#',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#',' ',' ','#',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#','#','#','#',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ','v',' ',' ',' ',' ',' ',' ',' ','&',' ',' ',' ',' ','<',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','*'},
+		{'*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*'}};
+    
+    int z = 8; 
+    int h = 4; 
+    char input;
+    int i;
+    int dir;
+    int vit = 3;
+    int fase = 1;
+    
+    srand(time(NULL));
+    input = getch();
+    
+    while(fase == 1){
+	system("cls");
+    
+    for(i=0;i<10;i++){
+
+    	printf("%c", sl[0][i]);
+
+	}printf ("\n");
+	for(i=0;i<10;i++){
+		
+		printf("%c", sl[1][i]);
+		
+	}printf ("\n");
+	for(i=0;i<10;i++){
+		
+		printf("%c", sl[2][i]);
+		
+		}printf ("\n");
+	for(i=0;i<10;i++){
+		
+		printf("%c", sl[3][i]);
+		
+		}printf ("\n");
+	for(i=0;i<10;i++){
+		
+		printf("%c", sl[4][i]);
+		
+		}printf ("\n");
+	for(i=0;i<10;i++){
+		
+		printf("%c", sl[5][i]);
+		
+		}printf ("\n");
+	for(i=0;i<10;i++){
+		
+		printf("%c", sl[6][i]);
+		
+		}printf ("\n");
+	for(i=0;i<10;i++){
+		
+		printf("%c", sl[7][i]);
+		
+		}printf ("\n");
+	for(i=0;i<10;i++){
+		
+		printf("%c", sl[8][i]);
+		
+		}printf ("\n");
+	for(i=0;i<10;i++){
+		
+		printf("%c", sl[9][i]);
+		
+	    }printf("\n");
+     printf(" %d", vit);
+	
+    
+     input = getch();
+     
+     switch(input){ // movimento &
+     	
+     	case 'w':
+     		
+     		if(sl[z-1][h] == ' ' ){
+			 
+            sl[z-1][h] = '&';
+            sl[z][h] =' ';
+            z--;
+				
+			}break;
+		
+		case 's':
+     		
+     		if(sl[z+1][h] == ' '){
+			 
+            sl[z+1][h] = '&';
+            sl[z][h] =' ';
+            z++;
+				
+			}break;
+			    
+		case 'a':
+     		
+     		if(sl[z][h-1] == ' '){
+			 
+            sl[z][h -1] = '&';
+            sl[z][h] =' ';
+            h--;
+            
+			}break;
+			 
+			    
+		case 'd':
+     		
+     		if(sl[z][h+1] == ' '){
+			 
+            sl[z][h+1] = '&';
+            sl[z][h] =' ';
+            h++;
+            
+			}break;
+				 
+		case 'i':
+			
+			if(sl[z-1][h] == '@'||sl[z+1][h] == '@'||sl[z][h-1] == '@'||sl[z][h+1] == '@'){
+				
+				sl[4][6] = ' ';
+				sl[0][4] = '=';
+			}else if(sl[z-1][h] == '='||sl[z+1][h] == '='||sl[z][h-1] == '='||sl[z][h+1] == '='){
+				
+				system("cls");
+				printf("nivel  concluido\n ");
+				fase++;
+				system("pause");
+				system("cls");	
+				
+			}
+	  
+
+}
+	  
+	  
+		
+} 
+
+     z = 16; 
+     h = 9; 
+     input;
+     i;
+     dir;
+     vit = 3;
+     int zx = 9;
+     int hx = 3;
+    
+    
+    while( fase == 2){ // faze 2/////////////////////////////////////////////////////////////////////////////
+    	
+    	system("cls");
+    
+    for(i=0;i<20;i++){
+
+    	printf("%c", sll[0][i]);
+
+	}printf ("\n");
+	for(i=0;i<20;i++){
+		
+		printf("%c", sll[1][i]);
+		
+	}printf ("\n");
+	for(i=0;i<20;i++){
+		
+		printf("%c", sll[2][i]);
+		
+		}printf ("\n");
+	for(i=0;i<20;i++){
+		
+		printf("%c", sll[3][i]);
+		
+		}printf ("\n");
+	for(i=0;i<20;i++){
+		
+		printf("%c", sll[4][i]);
+		
+		}printf ("\n");
+	for(i=0;i<20;i++){
+		
+		printf("%c", sll[5][i]);
+		
+		}printf ("\n");
+	for(i=0;i<20;i++){
+		
+		printf("%c", sll[6][i]);
+		
+		}printf ("\n");
+	for(i=0;i<20;i++){
+		
+		printf("%c", sll[7][i]);
+		
+		}printf ("\n");
+	for(i=0;i<20;i++){
+		
+		printf("%c", sll[8][i]);
+		
+		}printf ("\n");
+	for(i=0;i<20;i++){
+		
+		printf("%c", sll[9][i]);
+		
+	    }printf("\n");
+	for(i=0;i<20;i++){
+
+    	printf("%c", sll[10][i]);
+
+	}printf ("\n");
+	for(i=0;i<20;i++){
+		
+		printf("%c", sll[11][i]);
+		
+	}printf ("\n");
+	for(i=0;i<20;i++){
+		
+		printf("%c", sll[12][i]);
+		
+		}printf ("\n");
+	for(i=0;i<20;i++){
+		
+		printf("%c", sll[13][i]);
+		
+		}printf ("\n");
+	for(i=0;i<20;i++){
+		
+		printf("%c", sll[14][i]);
+		
+		}printf ("\n");
+	for(i=0;i<20;i++){
+		
+		printf("%c", sll[15][i]);
+		
+		}printf ("\n");
+	for(i=0;i<20;i++){
+		
+		printf("%c", sll[16][i]);
+		
+		}printf ("\n");
+	for(i=0;i<20;i++){
+		
+		printf("%c", sll[17][i]);
+		
+		}printf ("\n");
+	for(i=0;i<20;i++){
+		
+		printf("%c", sll[18][i]);
+		
+		}printf ("\n");
+	for(i=0;i<20;i++){
+		
+		printf("%c", sll[19][i]);
+}printf("\n");
+     printf(" %d", vit);
+	
+	
+    dir = rand() % 4 + 1; // Gera um número aleatório de 1 a 4
+        
+        // Move x na direção aleatória
+        switch (dir) {
+            
+            case 1:
+            	if( sll [zx-1][hx] == ' '){
+            		
+            		sll[zx-1][hx] = 'x';
+            		sll[zx][hx] =' ';
+            		zx--;
+            		
+				}else if( sll[zx-1][hx] == '&' && vit == 0){
+					
+					system("cls");
+			 printf("kkkkkkkkkkk muito noob \n");
+			 system("pause");
+			 
+				}else if(sll[zx-1][hx] == '&' ){
+					
+				sll[z][h] = ' ';
+			 	
+			     z= 16;
+			     h= 9;
+			     sll[z][h]= '&';
+			    vit - 1;
+			    vit --;
+					
+				} break;
+			
+			case 2:
+            	if( sll [zx][hx-1] == ' '){
+            		
+            		sll[zx][hx-1] = 'x';
+            		sll[zx][hx] =' ';
+            		hx--;
+            		
+				}else if( sll[zx][hx-1] == '&' && vit == 0){
+					
+					system("cls");
+			 printf("kkkkkkkkkkk muito noob \n");
+			 system("pause");
+			 
+				}else if(sll[zx][hx-1] == '&' ){
+					
+				sll[z][h] = ' ';
+			 	
+			     z= 16;
+			     h= 9;
+			     sll[z][h]= '&';
+			    vit - 1;
+			    vit --;
+					
+				} break;
+				
+			case 3:
+            	if( sll [zx+1][hx] == ' '){
+            		
+            		sll[zx+1][hx] = 'x';
+            		sll[zx][hx] =' ';
+            		zx++;
+            		
+				}else if( sll[zx+1][hx] == '&' && vit == 0){
+					
+					system("cls");
+			 printf("kkkkkkkkkkk muito noob \n");
+			 system("pause");
+			 
+				}else if(sll[zx+1][hx] == '&' ){
+					
+				sll[z][h] = ' ';
+			 	
+			     z= 16;
+			     h= 9;
+			     sll[z][h]= '&';
+			    vit - 1;
+			    vit --;
+					
+				} break;
+				
+			case 4:
+            	if( sll [zx][hx+1] == ' ' ){
+            		
+            		sll[zx][hx+1] = 'x';
+            		sll[zx][hx] =' ';
+            		hx++;
+            		
+				}else if( sll[zx][hx+1] == '&' && vit == 0){
+					
+					system("cls");
+			 printf("kkkkkkkkkkk muito noob \n");
+			 system("pause");
+			 
+				}else if(sll[zx][hx+1] == '&' ){
+					
+				sll[z][h] = ' ';
+			 	
+			     z= 16;
+			     h= 9;
+			     sll[z][h]= '&';
+			    vit - 1;
+			    vit --;
+					
+				}break;
+				
+                
+            }
+    
+     input = getch();
+     
+     switch(input){ // movimento &
+     	
+     	case 'w':
+     		
+     		if(sll[z-1][h] == ' ' ){
+			 
+            sll[z-1][h] = '&';
+            sll[z][h] =' ';
+            z--;
+            
+			 }else if((sll[z-1][h] == '#'|| sll[z-1][h] == 'x') && vit == 0){
+			 	
+			 	system("cls");
+			 	printf("kkkkkkkkkkk muito noob \n");
+			 	system("pause");
+			 	return 0;
+			 	
+			 }else if( sll[z-1][h] == '#'|| sll[z-1][h] == 'x'){
+			 	
+			 	sll[z][h] = ' ';
+			 	
+			     z= 16;
+			     h= 9;
+			     sll[z][h]= '&';
+			    vit - 1;
+			    vit --;
+			    
+			    }else if( sll[z-1][h] == 'o' ){
+				
+				sll[z-1][h]='&';
+				sll[z][h] = ' ';
+				sll[8][16] = ' ';
+				z--;
+				
+			}break;
+		
+		case 's':
+     		
+     		if(sll[z+1][h] == ' '){
+			 
+            sll[z+1][h] = '&';
+            sll[z][h] =' ';
+            z++;
+            
+			 }else if((sll[z+1][h] == '#'|| sll[z+1][h] == 'x') && vit == 0){
+			 	
+			 	system("cls");
+			 	printf("kkkkkkkkkkk muito noob \n");
+			 	system("pause");
+			 	return 0;
+			 	
+			 }else if( sll[z+1][h] == '#'|| sll[z+1][h] == 'x'){
+			 	
+			 	sll[z][h] = ' ';
+			 	
+			     z= 16;
+			     h= 9;
+			     sll[z][h]= '&';
+			    vit - 1;
+			    vit --;
+			    
+			    }else if( sll[z+1][h] == '#'|| sll[z+1][h] == 'x'){
+			 
+			 	
+			 	system("cls");
+			 printf("kkkkkkkkkkk muito noob \n");
+			 system("pause");
+			 return 0;
+			 
+			 
+			
+		}else if( sll[z+1][h] == 'o' ){
+				
+				sll[z+1][h]='&';
+				sll[z][h] = ' ';
+				sll[8][16] = ' ';
+				z++;
+				
+			}break;
+			    
+		case 'a':
+     		
+     		if(sll[z][h-1] == ' '){
+			 
+            sll[z][h -1] = '&';
+            sll[z][h] =' ';
+            h--;
+            
+			 }else if((sll[z][h-1] == '#'|| sll[z][h-1] == 'x') && vit == 0){
+			 	
+			 	system("cls");
+			 	printf("kkkkkkkkkkk muito noob \n");
+			 	system("pause");
+			 	
+			 }else if( sll[z][h-1] == '#'|| sll[z][h-1] == 'x'){
+			 	
+			 	sll[z][h] = ' ';
+			 	
+			     z= 16;
+			     h= 9;
+			     sll[z][h]= '&';
+			    vit - 1;
+			    vit --;
+			    
+			    }else if( sll[z][h-1] == 'o' ){
+				
+				sll[z][h-1]='&';
+				sll[z][h] =' ';
+				sll[8][16] =' ';
+				h--;
+				
+			}break;
+			 
+			    
+		case 'd':
+     		
+     		if(sll[z][h+1] == ' '){
+			 
+            sll[z][h+1] = '&';
+            sll[z][h] =' ';
+            h++; 
+			 }else if((sll[z][h+1] == '#'|| sll[z][h+1] == 'x') && vit == 0){
+			 	
+			 	system("cls");
+			 	printf("kkkkkkkkkkk muito noob \n");
+			 	system("pause");
+			 	return 0;
+			 	
+			 }else if( sll[z][h+1] == '#'|| sll[z][h+1] == 'x'){
+			 	
+			 	sll[z][h] = ' ';
+			 	
+			     z= 16;
+			     h= 9;
+			     sll[z][h]= '&';
+			    vit - 1;
+			    vit --;
+			    
+			
+				 }else if( sll[z][h+1] == 'o' ){
+				
+				sll[z][h+1]='&';
+				sll[z][h] = ' ';
+				sll[8][16] = ' ';
+				h++;
+				
+			}break;
+				 
+		case 'i':
+			
+			if(sll[z-1][h] == '@'||sll[z+1][h] == '@'||sll[z][h-1] == '@'||sll[z][h+1] == '@'){
+				
+				sll[7][16] = ' ';
+				sll[0][5] = '=';
+			}else if(sll[z-1][h] == '='||sll[z+1][h] == '='||sll[z][h-1] == '='||sll[z][h+1] == '='){
+				
+				system("cls");
+				printf("nivel  concluido\n ");
+				fase++;
+				system("pause");
+				system("cls");	
+				
+			}
+	}
+		}
+		
+	 z = 24; 
+     h = 10; 
+     vit = 3;
+     int zv = 24;
+     int hv = 2;
+    
+	
+	
+	 while( fase == 3){ //fase 3 /////////////////////////////////////////////////////////////////////////////
+	 	
+	 	system("cls");
+	 	
+	 	
+	 	if( (slll[zv-1][hv] == '&' || slll[zv+1][hv] == '&'
+		  || slll[zv][hv+1] == '&' || slll[zv][hv-1] == '&' )&& vit == 0){
+	 		
+	 			system("cls");
+					printf("               kkkkkkkkkkk muito noob \n");
+					system("pause");
+					return 0;
+					
+		 }else if( slll[zv-1][hv] == '&' || slll[zv+1][hv] == '&'
+		  || slll[zv][hv+1] == '&' || slll[zv][hv-1] == '&' ){
+		 	
+		 	slll[z][h] =' ';
+		    z = 24;
+			h = 10;
+			vit - 1;
+			vit--;
+		 }
+    
+    for(i=0;i<30;i++){
+
+    	printf("%c", slll[0][i]);
+
+	}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[1][i]);
+		
+	}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[2][i]);
+		
+		}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[3][i]);
+		
+		}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[4][i]);
+		
+		}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[5][i]);
+		
+		}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[6][i]);
+		
+		}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[7][i]);
+		
+		}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[8][i]);
+		
+		}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[9][i]);
+		
+	    }printf("\n");
+	for(i=0;i<30;i++){
+
+    	printf("%c", slll[10][i]);
+
+	}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[11][i]);
+		
+	}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[12][i]);
+		
+		}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[13][i]);
+		
+		}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[14][i]);
+		
+		}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[15][i]);
+		
+		}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[16][i]);
+		
+		}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[17][i]);
+		
+		}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[18][i]);
+		
+		}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[19][i]);
+        }printf("\n");
+    for(i=0;i<30;i++){
+
+    	printf("%c", slll[20][i]);
+
+	}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[21][i]);
+		
+	}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[22][i]);
+		
+		}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[23][i]);
+		
+		}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[24][i]);
+		
+		}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[25][i]);
+		
+		}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[26][i]);
+		
+		}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[27][i]);
+		
+		}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[28][i]);
+		
+		}printf ("\n");
+	for(i=0;i<30;i++){
+		
+		printf("%c", slll[29][i]);
+		
+	    }printf("\n"); 
+	    
+	    int dirv = rand() % 2 + 1;
+         
+         if( z != zv && h != hv ){
+         	
+         	dirv;
+		 
+		 }
+		 
+		 if( dirv == 1){
+		 	if( z > zv && slll[zv+1][hv] == ' ' || slll[zv+1] == '&'){
+		 		
+		 		slll[zv+1][hv] = 'v';
+		 		slll[zv][hv] = ' ';
+		 		zv++;
+		 		
+			 }else if(z < zv && slll[zv-1][hv] == ' ' || slll[zv-1][hv] == '&'){
+			 	
+			 	slll[zv-1][hv] = 'v';
+		 		slll[zv][hv] = ' ';
+			 	zv--;
+			 	
+			 }
+			 
+		 } else if( dirv == 2){
+		 	if( h > hv && slll[zv][hv+1] == ' ' || slll[zv][hv+1] == '&'){
+		 		
+		 		slll[zv][hv+1] = 'v';
+		 		slll[zv][hv] = ' ';
+		 		hv++;
+		 		
+			 }else if( h < hv && slll[zv][hv-1] == ' ' || slll[zv][hv-1] == '&'){
+			 	
+			 	slll[zv][hv-1] = 'v';
+		 		slll[zv][hv] = ' ';
+			 	hv--;
+			 }
+		 }
+		 
+       
+        
+        switch(getch()){
+        	
+        	case 'w':
+        		if(slll[z-1][h] == ' '){
+        			
+        			slll[z-1][h] = '&';
+        			slll[z][h] = ' ';
+        			z--;
+				}else if( (slll[z-1][h] == '#'|| slll[z-1][h] == 'v') && vit == 0 ){
+					
+					system("cls");
+					printf("               kkkkkkkkkkk muito noob \n");
+					system("pause");
+					return 0;
+				
+				}else if(slll[z-1][h] == '#'|| slll[z-1][h] == 'v'){
+					
+					slll[z][h] = ' ';
+					
+					z = 24;
+					h = 10;
+					vit--;
+					
+				}else if( slll[z-1][h] == 'o'){
+					
+					slll[z-1][h] = '&';
+					slll[z][h] =' ';
+					slll[15][20] = ' ';
+					z--;
+				}break;
+				
+				case 's':
+        		if(slll[z+1][h] == ' '){
+        			
+        			slll[z+1][h] = '&';
+        			slll[z][h] = ' ';
+        			z++;
+				}else if( (slll[z+1][h] == '#'|| slll[z+1][h] == 'v') && vit == 0 ){
+					
+					system("cls");
+					printf("               kkkkkkkkkkk muito noob \n");
+					system("pause");
+					return 0;
+				
+				}else if(slll[z+1][h] == '#'|| slll[z+1][h] == 'v'){
+					
+					slll[z][h] = ' ';
+					
+					z = 24;
+					h = 10;
+					vit--;
+				}else if( slll[z+1][h] == 'o'){
+					
+					slll[z+1][h] = '&';
+					slll[z][h] =' ';
+					slll[15][20] = ' ';
+					z++;
+				}break;
+				
+				case 'a':
+        		if(slll[z][h-1] == ' '){
+        			
+        			slll[z][h-1] = '&';
+        			slll[z][h] = ' ';
+        			h--;
+				}else if( (slll[z][h-1] == '#'|| slll[z][h-1] == 'v') && vit == 0 ){
+					
+					system("cls");
+					printf("               kkkkkkkkkkk muito noob \n");
+					system("pause");
+					return 0;
+				
+				}else if(slll[z][h-1] == '#'|| slll[z][h-1] == 'v'){
+					
+					slll[z][h] = ' ';
+					
+					z = 24;
+					h = 10;
+					vit--;
+				}else if( slll[z][h-1] == 'o'){
+					
+					slll[z][h-1] = '&';
+					slll[z][h] =' ';
+					slll[15][20] = ' ';
+					h--;
+				}break;
+				
+				case 'd':
+        		if(slll[z][h+1] == ' '){
+        			
+        			slll[z][h+1] = '&';
+        			slll[z][h] = ' ';
+        			h++;
+				}else if( (slll[z][h+1] == '#'|| slll[z][h+1] == 'v') && vit == 0 ){
+					
+					system("cls");
+					printf("               kkkkkkkkkkk muito noob \n");
+					system("pause");
+					return 0;
+				
+				}else if(slll[z][h+1] == '#'|| slll[z][h+1] == 'v'){
+					
+					slll[z][h] = ' ';
+					
+					z = 24;
+					h = 10;
+                    vit--;
+				}else if( slll[z][h+1] == 'o'){
+					
+					slll[z][h+1] = '&';
+					slll[z][h] =' ';
+					slll[15][20] = ' ';
+					h++;
+				}break;
+				
+				case 'i':
+					if(slll[z-1][h] == '@'||slll[z+1][h] == '@'||slll[z][h-1] == '@'||slll[z][h+1] == '@'){
+						
+						slll[13][18]=' ';
+						slll[0][10] = '=';
+						
+					}else if(slll[z-1][h] == '='||slll[z+1][h] == '='||slll[z][h-1] == '='||slll[z][h+1] == '='){
+						
+						system("cls");
+						printf("       vitoria! \n");
+						printf("       obrigado por jogar ;) \n");
+						system("pause");
+						
+						return 0;
+					}else if(slll[24][16] == '&'){
+						
+						slll[z][h] = ' ';
+						
+						z=3;
+						h=10;
+						slll[z][h] ='&';
+					}else if(slll[3][10] == '&'){
+						
+						slll[z][h] = ' ';
+						z = 24;
+						h = 16;
+						slll[24][16] = '&';
+						
+					}
+			
+					
+     
+	 }
+
+}
+}
+    return 0;
+	
+}
